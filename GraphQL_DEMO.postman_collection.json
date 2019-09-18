@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "ad746a6c-dd0a-4e15-af54-0c19b39272fc",
+		"name": "GraphQL_DEMO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "query-demo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($idSeller: String){\r\n  findAllClient {\r\n    fullName\r\n  }\r\n  findSellerById(idSeller:$idSeller) {\r\n    firstName\r\n  }\r\n  findAllSale {\r\n    idSale\r\n    description\r\n    client {\r\n      fullName\r\n    }\r\n    seller {\r\n      firstName\r\n      lastName\r\n    }\r\n    store {\r\n      city\r\n    }\r\n  }\r\n}\r\n",
+						"variables": "{\r\n  \"idSeller\":\"2\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mutation-demo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation($idClient: String, $clientName: String) {\r\n  saveClient(idClient: $idClient, fullName: $clientName) {\r\n    fullName\r\n  }\r\n}",
+						"variables": "{\r\n  \"idClient\": \"3\",\r\n  \"clientName\": \"Andrés Hurtado\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
