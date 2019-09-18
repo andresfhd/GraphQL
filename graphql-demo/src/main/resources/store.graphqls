@@ -1,0 +1,38 @@
+schema{
+ query:Query
+ mutation:Mutation
+}
+
+type Query{
+  findSellerById(idSeller: String): Seller
+  findAllSale: [Sale]
+  findAllClient: [Client]
+}
+
+type Client{
+  idClient:String
+  fullName:String
+}
+
+type Seller{
+  idSeller:String
+  firstName:String
+  lastName:String
+}
+
+type Store{
+  idStore:String
+  city:String
+}
+
+type Sale{
+  idSale:String
+  description:String
+  client: Client
+  seller: Seller
+  store: Store
+}
+
+type Mutation {
+    saveClient(idClient: String, fullName:String) : Client
+}
